@@ -31,7 +31,7 @@
         recettes_reelles_fonctionnement: 42871089.53  # des communes N-2 pour l'année N
         
   output:
-    df_evolution_part_dynamique: 0  # DF / -21 345 ?
+    df_evolution_part_dynamique: -2_625_326  # à comparer / -21 345 ? 
     df_coefficient_logarithmique: 0  # DF
 
     df_eligible_ecretement: True  # DF
@@ -120,7 +120,7 @@
         # en population DGF par expérience leximpact-server
         chef_lieu_departement_dans_agglomeration: False  # False = valeur effective 2021
 
-        dsr_montant_eligible_fraction_bourg_centre: 
+        dsr_montant_eligible_fraction_bourg_centre:
           2020: 0  # 0 = valeur effective 2020 du : (montant global réparti - montant de la garantie de sortie)
         # + dsr_eligible_fraction_bourg_centre => dsr_montant_garantie_non_eligible_fraction_bourg_centre
 
@@ -142,15 +142,21 @@
     dsr_eligible_fraction_cible: False  # False = valeur effective 2021
     # + potentiel_financier_par_habitant_moyen + potentiel_financier_par_habitant
     # => indice_synthetique_dsr_cible => rang_indice_synthetique_dsr_cible => dsr_fraction_cible
-    rang_indice_synthetique_dsr_cible: 33096
-    dsr_montant_total_eligibles_fraction_cible: 0  # 0 = valeur effective 2021
+    rang_indice_synthetique_dsr_cible: 1  # (par ailleurs, rang DSR cible : 33096)
+
+    dsr_montant_total_eligibles_fraction_cible: 35_541_596  # à comparer
     # + dsr_score_attribution_cible_part_potentiel_financier_par_habitant 
     # => dsr_montant_total_eligibles_fraction_cible_part_* :
-    dsr_montant_total_eligibles_fraction_cible_part_potentiel_financier_par_habitant: 0  # 0 = valeur effective 2021
-    dsr_montant_total_eligibles_fraction_cible_part_longueur_voirie: 0  # 0 = valeur effective 2021
-    dsr_montant_total_eligibles_fraction_cible_part_enfants: 0  # 0 = valeur effective 2021
-    dsr_montant_total_eligibles_fraction_cible_part_potentiel_financier_par_hectare: 0  # 0 = valeur effective 2021
+    dsr_montant_total_eligibles_fraction_cible_part_potentiel_financier_par_habitant: 10_662_479  # à comparer
+    dsr_montant_total_eligibles_fraction_cible_part_longueur_voirie: 10_662_479  # à comparer
+    dsr_montant_total_eligibles_fraction_cible_part_enfants: 10_662_479  # à comparer
+    dsr_montant_total_eligibles_fraction_cible_part_potentiel_financier_par_hectare: 3_554_159.8  # à comparer
     
+    dsr_fraction_cible_part_potentiel_financier_par_habitant: 0
+    dsr_fraction_cible_part_longueur_voirie: 0
+    dsr_fraction_cible_part_enfants: 0
+    dsr_fraction_cible_part_potentiel_financier_par_hectare: 0
+
     dsr_garantie_commune_nouvelle_fraction_cible: 0  # 0 = valeur effective 2021 du montant global réparti
     dsr_montant_hors_garanties_fraction_cible: 0
     dsr_montant_garantie_non_eligible_fraction_cible: 0
