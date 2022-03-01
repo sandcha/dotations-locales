@@ -57,6 +57,7 @@
         # => indice_synthetique_dsr_cible 
         # & dsr_score_attribution_cible_part_potentiel_financier_par_habitant & dsr_score_attribution_cible_part_potentiel_financier_par_hectare
         # & dsr_eligible_fraction_bourg_centre_type_2 & dsr_score_attribution_fraction_bourg_centre
+        # & dsr_eligible_fraction_perequation & dsr_score_attribution_perequation_part_potentiel_financier_par_habitant
         population_insee: 0
         # => indice_synthetique_dsr_cible 
         # & dsr_eligible_fraction_bourg_centre_type_1 & dsr_eligible_fraction_bourg_centre_type_2 & dsr_score_attribution_fraction_bourg_centre
@@ -65,10 +66,28 @@
         # => dsr_score_attribution_cible_part_potentiel_financier_par_hectare 
         # & dsr_eligible_fraction_bourg_centre_type_1 & dsr_eligible_fraction_bourg_centre_type_2 
         # & dsr_score_attribution_fraction_bourg_centre (pas outre-mer ?)
+        # & dsr_eligible_fraction_perequation & dsr_score_attribution_perequation_part_potentiel_financier_par_habitant
         effort_fiscal: 0
         # + potentiel_financier + outre_mer => dsr_ score _attribution_cible_part_potentiel_financier_par_habitant => dsr_ valeur_point _fraction_cible_part_potentiel_financier_par_habitant 
         # => dsr_fraction_cible_ part_potentiel_financier _par_habitant => dsr_fraction_cible
         # & dsr_score_attribution_fraction_bourg_centre
+        # & dsr_score_attribution_perequation_part_potentiel_financier_par_habitant
+
+        # FRACTION CIBLE & PEREQUATION
+
+        population_enfants: 0
+        # + dsr_eligible_fraction_cible => dsr_score_attribution_cible_part_enfants
+        # + dsr_eligible_fraction_perequation => dsr_score_attribution_perequation_part_enfants
+
+        longueur_voirie: 0
+        insulaire: False
+        zone_de_montagne: False
+        # + dsr_eligible_fraction_cible => dsr_score_attribution_cible_part_longueur_voirie
+        # + dsr_eligible_fraction_perequation => dsr_score_attribution_perequation_part_enfants
+
+        superficie: 0
+        # => dsr_score_attribution_cible_part_potentiel_financier_par_hectare
+        # + dsr_eligible_fraction_perequation => dsr_score_attribution_perequation_part_potentiel_financier_par_hectare
 
         # FRACTION CIBLE
 
@@ -80,17 +99,6 @@
         potentiel_financier_par_habitant: 0
         dsr_eligible_fraction_cible: True
         # => indice_synthetique_dsr_cible => rang_indice_synthetique_dsr_cible => dsr_fraction_cible
-
-        population_enfants: 0
-        # + dsr_eligible_fraction_cible => dsr_score_attribution_cible_part_enfants
-
-        longueur_voirie: 0
-        insulaire: False
-        zone_de_montagne: False
-        # + dsr_eligible_fraction_cible => dsr_score_attribution_cible_part_longueur_voirie
-
-        superficie: 0
-        # => dsr_score_attribution_cible_part_potentiel_financier_par_hectare
   
         dsr_montant_hors_garanties_fraction_cible:
           2021: 0
@@ -111,6 +119,12 @@
         dsr_montant_eligible_fraction_bourg_centre: 
           2021: 0
         # + dsr_eligible_fraction_bourg_centre => dsr_montant_garantie_non_eligible_fraction_bourg_centre
+
+        # FRACTION PEREQUATION
+
+        dsr_montant_eligible_fraction_perequation:
+          2021: 0
+        # + dsr_montant_hors_garanties_fraction_perequation => dsr_montant_eligible_fraction_perequation
 
   output:
     dsr_eligible_fraction_perequation: 0
@@ -161,7 +175,28 @@
 
     dsr_fraction_bourg_centre: 0
     
+    # FRACTION PEREQUATION
+    dsr_montant_total_eligibles_fraction_perequation: 100
+    # => dsr_montant_total_eligibles_fraction_perequation_part_* :
+    dsr_montant_total_eligibles_fraction_perequation_part_potentiel_financier_par_habitant: 30
+    # + dsr_score_attribution_perequation_part_potentiel_financier_par_habitant 
+    # => dsr_valeur_point_fraction_perequation_part_potentiel_financier_par_habitant & dsr_fraction_perequation_part_potentiel_financier_par_habitant
+    dsr_montant_total_eligibles_fraction_perequation_part_longueur_voirie: 30
+    # + dsr_score_attribution_perequation_part_longueur_voirie
+    # => dsr_valeur_point_fraction_perequation_part_longueur_voirie & dsr_fraction_perequation_part_longueur_voirie
+    dsr_montant_total_eligibles_fraction_perequation_part_enfants: 30
+    # + dsr_score_attribution_perequation_part_enfants
+    # => dsr_valeur_point_fraction_perequation_part_enfants & dsr_fraction_perequation_part_enfants
+    dsr_montant_total_eligibles_fraction_perequation_part_potentiel_financier_par_hectare: 10
+    # + dsr_score_attribution_perequation_part_potentiel_financier_par_hectare
+    # => dsr_valeur_point_fraction_perequation_part_potentiel_financier_par_hectare & dsr_fraction_perequation_part_potentiel_financier_par_hectare
+ 
+    dsr_garantie_commune_nouvelle_fraction_perequation: 0
+    dsr_montant_eligible_fraction_perequation: 0
+
     dsr_fraction_perequation: 0
     
+    # DSR
+
     dotation_solidarite_rurale: 0
 
