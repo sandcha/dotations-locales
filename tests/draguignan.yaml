@@ -32,15 +32,14 @@
         
   output:
     df_evolution_part_dynamique: -2_625_326  # à comparer / -21 345 ? 
-    df_coefficient_logarithmique: 0  # DF
+    df_coefficient_logarithmique: 1.733604
 
-    df_eligible_ecretement: True  # DF
-    df_score_attribution_ecretement: 1
-    montant_total_ecretement: 220000000
-    df_montant_total_ecretement: 132000000  #= 60% * montant total ecrêtement
-    df_montant_ecretement: 492
-
-    dotation_forfaitaire: 4291411
+    df_eligible_ecretement: False
+    df_score_attribution_ecretement: 0
+    montant_total_ecretement: 207_374_670  # à comparer
+    df_montant_total_ecretement: 124_424_802  # = 60% * montant total ecrêtement / à comparer
+    df_montant_ecretement: -2_147_483_600 # à comparer / 492 ?
+    dotation_forfaitaire: 2_149_171_500 # à comparer / 4291411 ?
 
 
 - name: Draguignan - dotation de solidarité rurale
@@ -82,7 +81,7 @@
         # + dsr_eligible_fraction_cible => dsr_score_attribution_cible_part_enfants
         # + dsr_eligible_fraction_perequation => dsr_score_attribution_perequation_part_enfants
 
-        longueur_voirie: 208982
+        longueur_voirie: 208_982
         insulaire: False  # False = valeur effective 2021
         zone_de_montagne: False  # False = valeur effective 2021
         # + dsr_eligible_fraction_cible => dsr_score_attribution_cible_part_longueur_voirie
@@ -121,6 +120,7 @@
         chef_lieu_departement_dans_agglomeration: False  # False = valeur effective 2021
 
         dsr_montant_eligible_fraction_bourg_centre:
+          2019: 0
           2020: 0  # 0 = valeur effective 2020 du : (montant global réparti - montant de la garantie de sortie)
         # + dsr_eligible_fraction_bourg_centre => dsr_montant_garantie_non_eligible_fraction_bourg_centre
 
@@ -151,65 +151,71 @@
     dsr_montant_total_eligibles_fraction_cible_part_longueur_voirie: 10_662_479  # à comparer
     dsr_montant_total_eligibles_fraction_cible_part_enfants: 10_662_479  # à comparer
     dsr_montant_total_eligibles_fraction_cible_part_potentiel_financier_par_hectare: 3_554_159.8  # à comparer
+
+    dsr_score_attribution_cible_part_potentiel_financier_par_habitant: 0
+    # inf : dsr_valeur_point_fraction_cible_part_potentiel_financier_par_habitant: 0
+    # nan : dsr_fraction_cible_part_potentiel_financier_par_habitant: 0
+
+    dsr_score_attribution_cible_part_longueur_voirie: 0
+    # inf : dsr_valeur_point_fraction_cible_part_longueur_voirie: 0
+    # nan : dsr_fraction_cible_part_longueur_voirie: 0
     
-    dsr_fraction_cible_part_potentiel_financier_par_habitant: 0
-    dsr_fraction_cible_part_longueur_voirie: 0
-    dsr_fraction_cible_part_enfants: 0
-    dsr_fraction_cible_part_potentiel_financier_par_hectare: 0
+    # nan : dsr_fraction_cible_part_enfants: 0
+    # nan : dsr_fraction_cible_part_potentiel_financier_par_hectare: 0
 
     dsr_garantie_commune_nouvelle_fraction_cible: 0  # 0 = valeur effective 2021 du montant global réparti
-    dsr_montant_hors_garanties_fraction_cible: 0
+    # nan : dsr_montant_hors_garanties_fraction_cible: 0
     dsr_montant_garantie_non_eligible_fraction_cible: 0
     # => dsr_fraction_cible
 
-    dsr_fraction_cible: 0
+    # nan : dsr_fraction_cible: 0
 
     # FRACTION BOURG-CENTRE
-    dsr_montant_total_fraction_bourg_centre: 0  # 0 = valeur effective 2021 du montant global réparti
+    dsr_montant_total_fraction_bourg_centre: 35_541_596  # à comparer ; 0 = valeur effective 2021 du montant global réparti
 
     dsr_exclue_fraction_bourg_centre_agglomeration: False
     dsr_exclue_fraction_bourg_centre_canton: False
-    dsr_exclue_fraction_bourg_centre_pfi: False
+    dsr_exclue_fraction_bourg_centre_pfi: True
 
-    dsr_exclue_fraction_bourg_centre_type_1: False
+    dsr_exclue_fraction_bourg_centre_type_1: True
     dsr_eligible_fraction_bourg_centre_type_1: False
-    dsr_exclue_fraction_bourg_centre_type_2: False
+    dsr_exclue_fraction_bourg_centre_type_2: True
     dsr_eligible_fraction_bourg_centre_type_2: False
     
-    dsr_score_attribution_fraction_bourg_centre: 0
-    dsr_valeur_point_fraction_bourg_centre: 0
+    # nan : dsr_score_attribution_fraction_bourg_centre: 0
+    # nan : dsr_valeur_point_fraction_bourg_centre: 0
     # => dsr_montant_hors_garanties_fraction_bourg_centre
 
-    dsr_montant_hors_garanties_fraction_bourg_centre: 0
+    # nan : dsr_montant_hors_garanties_fraction_bourg_centre: 0
 
     dsr_garantie_commune_nouvelle_fraction_bourg_centre: 0  # 0 = valeur effective 2021
-    dsr_montant_eligible_fraction_bourg_centre: 0
+    # nan : dsr_montant_eligible_fraction_bourg_centre: 0
     dsr_montant_garantie_non_eligible_fraction_bourg_centre: 0
     # => dsr_fraction_bourg_centre
 
-    dsr_fraction_bourg_centre: 0  # 0 = valeur effective 2021
+    # nan : dsr_fraction_bourg_centre: 0  # 0 = valeur effective 2021
     
     # FRACTION PEREQUATION
-    dsr_montant_total_eligibles_fraction_perequation: 100
+    dsr_montant_total_eligibles_fraction_perequation: 7_898_132
     # => dsr_montant_total_eligibles_fraction_perequation_part_* :
-    dsr_montant_total_eligibles_fraction_perequation_part_potentiel_financier_par_habitant: 0  # 0 = valeur effective 2021 / Part Pfi (avant garantie CN)
+    dsr_montant_total_eligibles_fraction_perequation_part_potentiel_financier_par_habitant: 2_369_439.8  # à comparer 0 = valeur effective 2021 / Part Pfi (avant garantie CN)
     # + dsr_score_attribution_perequation_part_potentiel_financier_par_habitant 
     # => dsr_valeur_point_fraction_perequation_part_potentiel_financier_par_habitant & dsr_fraction_perequation_part_potentiel_financier_par_habitant
-    dsr_montant_total_eligibles_fraction_perequation_part_longueur_voirie: 0  # 0 = valeur effective 2021
+    dsr_montant_total_eligibles_fraction_perequation_part_longueur_voirie: 2_369_439.8  # à comparer 0 = valeur effective 2021
     # + dsr_score_attribution_perequation_part_longueur_voirie
     # => dsr_valeur_point_fraction_perequation_part_longueur_voirie & dsr_fraction_perequation_part_longueur_voirie
-    dsr_montant_total_eligibles_fraction_perequation_part_enfants: 0  # 0 = valeur effective 2021
+    dsr_montant_total_eligibles_fraction_perequation_part_enfants: 2_369_439.8  # à comparer 0 = valeur effective 2021
     # + dsr_score_attribution_perequation_part_enfants
     # => dsr_valeur_point_fraction_perequation_part_enfants & dsr_fraction_perequation_part_enfants
-    dsr_montant_total_eligibles_fraction_perequation_part_potentiel_financier_par_hectare: 0  # 0 = valeur effective 2021
+    dsr_montant_total_eligibles_fraction_perequation_part_potentiel_financier_par_hectare: 789_813.2  # à comparer 0 = valeur effective 2021
     # + dsr_score_attribution_perequation_part_potentiel_financier_par_hectare
     # => dsr_valeur_point_fraction_perequation_part_potentiel_financier_par_hectare & dsr_fraction_perequation_part_potentiel_financier_par_hectare
  
     dsr_garantie_commune_nouvelle_fraction_perequation: 0  # 0 = valeur effective 2021 / Montant global réparti (après garantie CN)
-    dsr_montant_eligible_fraction_perequation: 0
+    # nan : dsr_montant_eligible_fraction_perequation: 0
 
-    dsr_fraction_perequation: 0
+    # nan : dsr_fraction_perequation: 0  # 0 valeur effective 2021 ?
     
     # DSR
 
-    dotation_solidarite_rurale: 0
+    # nan : dotation_solidarite_rurale: 0
