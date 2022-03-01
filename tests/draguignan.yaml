@@ -43,50 +43,84 @@
 - name: Draguignan - dotation de solidarité rurale
   period: 2022
   input:
-    population_insee: 0
-    # => indice_synthetique_dsr_cible
-
-    strate_demographique: 1
-    revenu_total: 0
-    # => revenu_par_habitant_moyen (de la strate) & revenu_par_habitant => indice_synthetique_dsr_cible
+    etats:
+      France:
+        communes: [Draguignan]
+        dsr_montant_total_eligibles_fraction_bourg_centre: 0
+        # + dsr_score_attribution_fraction_bourg_centre => dsr_valeur_point_fraction_bourg_centre
+    communes:
+      Draguignan:
     
-    outre_mer: False
-    potentiel_financier: 0
-    effort_fiscal: 0
-    # => dsr_ score _attribution_cible_part_potentiel_financier_par_habitant => dsr_ valeur_point _fraction_cible_part_potentiel_financier_par_habitant => dsr_fraction_cible_ part_potentiel_financier _par_habitant => dsr_fraction_cible
+        # TOUTES FRACTIONS
+
+        population_dgf: 0  # doit être <= 10 000
+        # => indice_synthetique_dsr_cible 
+        # & dsr_score_attribution_cible_part_potentiel_financier_par_habitant & dsr_score_attribution_cible_part_potentiel_financier_par_hectare
+        # & dsr_eligible_fraction_bourg_centre_type_2 & dsr_score_attribution_fraction_bourg_centre
+        population_insee: 0
+        # => indice_synthetique_dsr_cible 
+        # & dsr_eligible_fraction_bourg_centre_type_1 & dsr_eligible_fraction_bourg_centre_type_2 & dsr_score_attribution_fraction_bourg_centre
+        potentiel_financier: 0
+        outre_mer: False
+        # => dsr_score_attribution_cible_part_potentiel_financier_par_hectare 
+        # & dsr_eligible_fraction_bourg_centre_type_1 & dsr_eligible_fraction_bourg_centre_type_2 
+        # & dsr_score_attribution_fraction_bourg_centre (pas outre-mer ?)
+        effort_fiscal: 0
+        # + potentiel_financier + outre_mer => dsr_ score _attribution_cible_part_potentiel_financier_par_habitant => dsr_ valeur_point _fraction_cible_part_potentiel_financier_par_habitant 
+        # => dsr_fraction_cible_ part_potentiel_financier _par_habitant => dsr_fraction_cible
+        # & dsr_score_attribution_fraction_bourg_centre
+
+        # FRACTION CIBLE
+
+        strate_demographique: 1
+        revenu_total: 0
+        # => revenu_par_habitant_moyen (de la strate) & revenu_par_habitant => indice_synthetique_dsr_cible
     
-    potentiel_financier_par_habitant_moyen: 0
-    potentiel_financier_par_habitant: 0
-    dsr_eligible_fraction_cible: True
-    # => indice_synthetique_dsr_cible => rang_indice_synthetique_dsr_cible => dsr_fraction_cible
+        potentiel_financier_par_habitant_moyen: 0
+        potentiel_financier_par_habitant: 0
+        dsr_eligible_fraction_cible: True
+        # => indice_synthetique_dsr_cible => rang_indice_synthetique_dsr_cible => dsr_fraction_cible
 
-    population_enfants: 0
-    # + dsr_eligible_fraction_cible => dsr_score_attribution_cible_part_enfants
+        population_enfants: 0
+        # + dsr_eligible_fraction_cible => dsr_score_attribution_cible_part_enfants
 
-    longueur_voirie: 0
-    insulaire: False
-    zone_de_montagne: False
-    # + dsr_eligible_fraction_cible => dsr_score_attribution_cible_part_longueur_voirie
+        longueur_voirie: 0
+        insulaire: False
+        zone_de_montagne: False
+        # + dsr_eligible_fraction_cible => dsr_score_attribution_cible_part_longueur_voirie
 
-    superficie: 0
-    # => dsr_score_attribution_cible_part_potentiel_financier_par_hectare
+        superficie: 0
+        # => dsr_score_attribution_cible_part_potentiel_financier_par_hectare
+  
+        dsr_montant_hors_garanties_fraction_cible:
+          2021: 0
+        # + dsr_eligible_fraction_cible => dsr_montant_garantie_non_eligible_fraction_cible
 
-    dsr_eligible_fraction_bourg_centre: 0
+        # FRACTION BOURG-CENTRE
+
+        zrr: False  
+        # => dsr_score_attribution_fraction_bourg_centre
+        chef_lieu_de_canton: False
+        bureau_centralisateur: False
+        part_population_canton: 0
+        population_dgf_agglomeration: 0
+        population_dgf_departement_agglomeration: 0
+        population_dgf_maximum_commune_agglomeration: 0
+        chef_lieu_departement_dans_agglomeration: False  
+
+        dsr_montant_eligible_fraction_bourg_centre: 
+          2021: 0
+        # + dsr_eligible_fraction_bourg_centre => dsr_montant_garantie_non_eligible_fraction_bourg_centre
+
+  output:
     dsr_eligible_fraction_perequation: 0
     # => dsr_fraction_cible
+    
+    dsr_eligible_fraction_bourg_centre: False
+    # => dsr_fraction_cible 
+    # &  dsr_score_attribution_fraction_bourg_centre
 
-    # => dsr_fraction_bourg_centre
-    # => dsr_fraction_perequation
-  
-    population_dgf: 0  # doit être <= 10 000
-    # => indice_synthetique_dsr_cible 
-    # & dsr_score_attribution_cible_part_potentiel_financier_par_habitant & dsr_score_attribution_cible_part_potentiel_financier_par_hectare
-    # & toute fraction
-
-    dsr_montant_hors_garanties_fraction_cible:
-      2021: 0
-    # + dsr_eligible_fraction_cible => dsr_montant_garantie_non_eligible_fraction_cible
-  output:
+    # FRACTION CIBLE
     dsr_montant_total_eligibles_fraction_cible: 100
     # + dsr_score_attribution_cible_part_potentiel_financier_par_habitant 
     # => dsr_montant_total_eligibles_fraction_cible_part_* :
@@ -102,6 +136,32 @@
 
     dsr_fraction_cible: 0
 
+    # FRACTION BOURG-CENTRE
+    dsr_montant_total_fraction_bourg_centre: 0
+
+    dsr_exclue_fraction_bourg_centre_agglomeration: False
+    dsr_exclue_fraction_bourg_centre_canton: False
+    dsr_exclue_fraction_bourg_centre_pfi: False
+
+    dsr_exclue_fraction_bourg_centre_type_1: False
+    dsr_eligible_fraction_bourg_centre_type_1: False
+    dsr_exclue_fraction_bourg_centre_type_2: False
+    dsr_eligible_fraction_bourg_centre_type_2: False
+    
+    dsr_score_attribution_fraction_bourg_centre: 0
+    dsr_valeur_point_fraction_bourg_centre: 0
+    # => dsr_montant_hors_garanties_fraction_bourg_centre
+
+    dsr_montant_hors_garanties_fraction_bourg_centre: 0
+
+    dsr_garantie_commune_nouvelle_fraction_bourg_centre: 0
+    dsr_montant_eligible_fraction_bourg_centre: 0
+    dsr_montant_garantie_non_eligible_fraction_bourg_centre: 0
+    # => dsr_fraction_bourg_centre
+
     dsr_fraction_bourg_centre: 0
+    
     dsr_fraction_perequation: 0
+    
     dotation_solidarite_rurale: 0
+
