@@ -14,7 +14,7 @@
     communes:
       Draguignan:
         dotation_forfaitaire:
-          2020: 0
+          2020: 4313248
         # => df_eligible_ecretement (pas df_score_attribution_ecretement) => dotation_forfaitaire
 
         potentiel_fiscal: 35112226  
@@ -23,9 +23,8 @@
         population_dgf: 40537
         # => df_eligible_ecretement => df_score_attribution_ecretement
 
-        population_dgf_majoree:  # 2021 = 40 537
-          2019: 10
-          2020: 10
+        population_dgf_majoree:  # (2021 = 40 537)
+          2020: 40728
         # = > df_evolution_part_dynamique => df_eligible_ecretement & df_montant_total_ecretement
         # => dotation_forfaitaire
 
@@ -104,7 +103,7 @@
         # => indice_synthetique_dsr_cible => rang_indice_synthetique_dsr_cible => dsr_fraction_cible
   
         dsr_montant_hors_garanties_fraction_cible:
-          2020: 0
+          2020: 0  # 0 = valeur effective 2020 du : (montant global réparti - montant de la garantie de sortie)
         # + dsr_eligible_fraction_cible => dsr_montant_garantie_non_eligible_fraction_cible
 
         # FRACTION BOURG-CENTRE
@@ -122,13 +121,13 @@
         chef_lieu_departement_dans_agglomeration: False  # False = valeur effective 2021
 
         dsr_montant_eligible_fraction_bourg_centre: 
-          2020: 0
+          2020: 0  # 0 = valeur effective 2020 du : (montant global réparti - montant de la garantie de sortie)
         # + dsr_eligible_fraction_bourg_centre => dsr_montant_garantie_non_eligible_fraction_bourg_centre
 
         # FRACTION PEREQUATION
 
         dsr_montant_eligible_fraction_perequation:
-          2020: 0
+          2020: 0  # 0 = valeur effective 2020 du : (montant global réparti - montant de la garantie de sortie)
         # + dsr_montant_hors_garanties_fraction_perequation => dsr_montant_eligible_fraction_perequation
 
   output:
