@@ -24,7 +24,7 @@
         # => df_eligible_ecretement => df_score_attribution_ecretement
 
         population_dgf_majoree:  # 2021 = 40 537
-          2020: 10
+          2019: 10
           2020: 10
         # = > df_evolution_part_dynamique => df_eligible_ecretement & df_montant_total_ecretement
         # => dotation_forfaitaire
@@ -116,7 +116,9 @@
         part_population_canton: 0.722006  # Pourcentage de la population communale dans le canton d'appartenance en 2014
         population_dgf_agglomeration: 73313
         population_dgf_departement_agglomeration: 1250132
-        population_dgf_maximum_commune_agglomeration: 0
+        population_dgf_maximum_commune_agglomeration: 40537  # Draguignan 
+        # par déduction 2019 sur https://fr.wikipedia.org/wiki/Dracénie_Provence_Verdon_agglomération
+        # en population DGF par expérience leximpact-server
         chef_lieu_departement_dans_agglomeration: False  # False = valeur effective 2021
 
         dsr_montant_eligible_fraction_bourg_centre: 
@@ -130,7 +132,7 @@
         # + dsr_montant_hors_garanties_fraction_perequation => dsr_montant_eligible_fraction_perequation
 
   output:
-    dsr_eligible_fraction_perequation: 0
+    dsr_eligible_fraction_perequation: False
     # => dsr_fraction_cible
     
     dsr_eligible_fraction_bourg_centre: False
