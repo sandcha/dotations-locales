@@ -1,0 +1,40 @@
+# Région : Provence-Alpes-Côte d'Azur
+# Département : Var
+
+- name: Draguignan
+  period: 2022
+  input:
+    etats:
+      France:
+        communes: [Draguignan]
+        potentiel_fiscal_moyen_national: 800
+    communes:
+      Draguignan:
+        dotation_forfaitaire:
+          2021: 0
+        # => df_eligible_ecretement (pas df_score_attribution_ecretement) => dotation_forfaitaire
+
+        df_evolution_part_dynamique: 0
+        # => df_eligible_ecretement
+
+        potentiel_fiscal: 0
+        population_dgf: 1
+        # => df_eligible_ecretement => df_score_attribution_ecretement
+
+        population_dgf_majoree:
+          2020: 10
+          2021: 10
+        # = > df_evolution_part_dynamique => df_montant_total_ecretement => dotation_forfaitaire
+
+        recettes_reelles_fonctionnement: 0
+        
+  output:
+    df_evolution_part_dynamique: 0  # DF
+    df_coefficient_logarithmique: 0  # DF
+
+    df_eligible_ecretement: True  # DF
+    df_score_attribution_ecretement: 1
+    montant_total_ecretement: 220000000
+    df_montant_total_ecretement: 132000000  #= 60% * montant total ecretement
+
+    dotation_forfaitaire: 0
