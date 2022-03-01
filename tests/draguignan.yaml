@@ -1,7 +1,7 @@
 # Région : Provence-Alpes-Côte d'Azur
 # Département : Var
 
-- name: Draguignan
+- name: Draguignan - dotation forfaitaire
   period: 2022
   input:
     etats:
@@ -35,6 +35,73 @@
     df_eligible_ecretement: True  # DF
     df_score_attribution_ecretement: 1
     montant_total_ecretement: 220000000
-    df_montant_total_ecretement: 132000000  #= 60% * montant total ecretement
+    df_montant_total_ecretement: 132000000  #= 60% * montant total ecrêtement
 
     dotation_forfaitaire: 0
+
+
+- name: Draguignan - dotation de solidarité rurale
+  period: 2022
+  input:
+    population_insee: 0
+    # => indice_synthetique_dsr_cible
+
+    strate_demographique: 1
+    revenu_total: 0
+    # => revenu_par_habitant_moyen (de la strate) & revenu_par_habitant => indice_synthetique_dsr_cible
+    
+    outre_mer: False
+    potentiel_financier: 0
+    effort_fiscal: 0
+    # => dsr_ score _attribution_cible_part_potentiel_financier_par_habitant => dsr_ valeur_point _fraction_cible_part_potentiel_financier_par_habitant => dsr_fraction_cible_ part_potentiel_financier _par_habitant => dsr_fraction_cible
+    
+    potentiel_financier_par_habitant_moyen: 0
+    potentiel_financier_par_habitant: 0
+    dsr_eligible_fraction_cible: True
+    # => indice_synthetique_dsr_cible => rang_indice_synthetique_dsr_cible => dsr_fraction_cible
+
+    population_enfants: 0
+    # + dsr_eligible_fraction_cible => dsr_score_attribution_cible_part_enfants
+
+    longueur_voirie: 0
+    insulaire: False
+    zone_de_montagne: False
+    # + dsr_eligible_fraction_cible => dsr_score_attribution_cible_part_longueur_voirie
+
+    superficie: 0
+    # => dsr_score_attribution_cible_part_potentiel_financier_par_hectare
+
+    dsr_eligible_fraction_bourg_centre: 0
+    dsr_eligible_fraction_perequation: 0
+    # => dsr_fraction_cible
+
+    # => dsr_fraction_bourg_centre
+    # => dsr_fraction_perequation
+  
+    population_dgf: 0  # doit être <= 10 000
+    # => indice_synthetique_dsr_cible 
+    # & dsr_score_attribution_cible_part_potentiel_financier_par_habitant & dsr_score_attribution_cible_part_potentiel_financier_par_hectare
+    # & toute fraction
+
+    dsr_montant_hors_garanties_fraction_cible:
+      2021: 0
+    # + dsr_eligible_fraction_cible => dsr_montant_garantie_non_eligible_fraction_cible
+  output:
+    dsr_montant_total_eligibles_fraction_cible: 100
+    # + dsr_score_attribution_cible_part_potentiel_financier_par_habitant 
+    # => dsr_montant_total_eligibles_fraction_cible_part_* :
+    dsr_montant_total_eligibles_fraction_cible_part_potentiel_financier_par_habitant: 30
+    dsr_montant_total_eligibles_fraction_cible_part_longueur_voirie: 30
+    dsr_montant_total_eligibles_fraction_cible_part_enfants: 30
+    dsr_montant_total_eligibles_fraction_cible_part_potentiel_financier_par_hectare: 10
+    
+    dsr_garantie_commune_nouvelle_fraction_cible: 0
+    dsr_montant_hors_garanties_fraction_cible: 0
+    dsr_montant_garantie_non_eligible_fraction_cible: 0
+    # => dsr_fraction_cible
+
+    dsr_fraction_cible: 0
+
+    dsr_fraction_bourg_centre: 0
+    dsr_fraction_perequation: 0
+    dotation_solidarite_rurale: 0
