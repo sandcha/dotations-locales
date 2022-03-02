@@ -10,4 +10,4 @@ nb-install:
 	pip install jupyter
 
 nb:
-	jupyter notebook tests/analyse_dotations.ipynb
+	jupyter notebook tests/
