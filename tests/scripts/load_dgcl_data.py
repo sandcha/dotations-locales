@@ -1,9 +1,15 @@
 import pandas  # type: ignore
+
 import os
-from utils.folder_finder import path_folder_assets  # type: ignore
+from os.path import dirname
 from pathlib import Path
 
-path_assets = path_folder_assets()
+
+def get_path_assets():
+    return dirname(__file__) + "/../.."
+
+path_assets = get_path_assets()
+
 # Quelques noms de colonne utiles:
 elig_bc_dgcl = "Eligible fraction bourg-centre selon DGCL"
 elig_pq_dgcl = "Eligible fraction péréquation selon DGCL"

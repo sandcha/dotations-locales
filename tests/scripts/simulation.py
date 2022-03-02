@@ -1,15 +1,16 @@
 from openfisca_core.simulation_builder import SimulationBuilder  # type: ignore
-from dotations.load_dgcl_data import (  # type: ignore
+from scripts.load_dgcl_data import (  # type: ignore
     load_dgcl_file,
     adapt_dgcl_data,
     insert_dsu_garanties,
     insert_dsr_garanties_communes_nouvelles,
-    get_last_year_dotations)
+    get_last_year_dotations,
+    get_path_assets)
 # Actually runs the simulations
 from openfisca_france_dotations_locales import CountryTaxBenefitSystem  # type: ignore
-from dotations.reform import DotationReform  # type: ignore
+from scripts.reform import DotationReform  # type: ignore
 import numpy as np  # type: ignore
-from utils.folder_finder import path_folder_assets  # type: ignore
+
 
 code_comm = "Informations générales - Code INSEE de la commune"
 
@@ -58,7 +59,7 @@ def simulation_from_dgcl_csv(period, data, tbs, data_previous_year=None):
 
 def resultfromreforms(dict_ref=None, to_compute_res=("dsr_eligible_fraction_bourg_centre", "dsr_eligible_fraction_perequation", "dsr_eligible_fraction_cible")):
     PERIOD = "2022"
-    path_assets = path_folder_assets()
+    path_assets = get_path_assets()
     # some of these can be preloaded in memory to improve performance.
     DATA = adapt_dgcl_data(load_dgcl_file(path_assets + "/data/{}-communes-criteres-repartition.csv".format(int(PERIOD) - 1)))
     DATA = insert_dsu_garanties(DATA, PERIOD, path_assets + "/data/garanties_dsu.csv")
